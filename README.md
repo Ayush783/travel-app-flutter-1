@@ -1,49 +1,16 @@
-<p align="left">
-	<img width="300" src="https://drive.google.com/uc?export=view&id=1XfLhaaUsef3sD7c46TC_ZoaorKg-uBFM" />
-	<h2 align="left"> < ADD PROJECT TITLE > </h2>
-	<h4 align="left"> < ADD PROJECT DESCRIPTION > <h4>
-</p>
+# travel_app
 
----
-[![DOCS](https://img.shields.io/badge/Documentation-see%20docs-green?style=for-the-badge&logo=appveyor)](INSERT_LINK_FOR_DOCS_HERE) 
-  [![UI ](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=for-the-badge&logo=appveyor)](INSERT_UI_LINK_HERE)
+A new Flutter project.
 
+## Getting Started
 
-## Functionalities
-- [ ]  < ADD FUNCTIONALITY >
-- [ ]  < ADD FUNCTIONALITY >
+This project is a starting point for a Flutter application.
 
-<br>
+A few resources to get you started if this is your first Flutter project:
 
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-## Instructions to run
-
-* Pre-requisites:
-	-  < add pre-requisite >
-	-  < add pre-requisite >
-
-* Directions to setup/install
-```bash
-< insert code >
-```
-
-* Directions to execute
-
-```bash
-< insert code >
-```
-
-<br>
-
-## Contributors
-
-* [ < ADD YOUR NAME > ](ADD_PROFILE_URL_HERE)
-
-
-
-<br>
-<br>
-
-<p align="center">
-	Made during 🌙 by DSC KIET
-</p>
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
