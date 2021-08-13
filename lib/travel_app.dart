@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/main.dart';
+import 'package:travel_app/ui/sign_in_screen.dart';
+import 'package:travel_app/ui/sign_up_screen.dart';
 
 class TravelApp extends StatelessWidget {
   const TravelApp({Key? key}) : super(key: key);
@@ -31,11 +33,19 @@ class MyHomePage extends StatelessWidget {
                   children: [
                     FlatButton(
                         color: Colors.blue,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (BuildContext) => SignUpScreen()));
+                        },
                         child: Text("Sign Up")),
                     FlatButton(
                         color: Colors.blue,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (BuildContext) => SignInScreen()));
+                        },
                         child: Text("Sign In")),
                   ],
                 ),
