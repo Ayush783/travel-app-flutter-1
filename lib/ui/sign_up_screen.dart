@@ -24,15 +24,15 @@ class SignUpScreen extends StatelessWidget {
               ),
             ),
             Container(
-              height: double.infinity,
-              width: double.infinity,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     height: 450,
-                    width: 300,
+                    width: MediaQuery.of(context).size.width / 1.29,
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -73,6 +73,73 @@ class SignUpScreen extends StatelessWidget {
                                                   SignInScreen()));
                                     })
                             ]),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 15),
+                          width: 250,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: 45,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.all(8),
+                                      child: Image(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                              "assets/icons/google.png")),
+                                    ),
+                                    Text(
+                                      "Sign up with Google",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                height: 45,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.all(8),
+                                      child: Image(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                              "assets/icons/facebook.png")),
+                                    ),
+                                    Text(
+                                      "Sign up with Facebook",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
                         )
                       ],
