@@ -2,11 +2,17 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/ui/sign_in_screen.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  @override
   Widget build(BuildContext context) {
+    bool check = false;
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -33,7 +39,6 @@ class SignUpScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      height: 450,
                       width: MediaQuery.of(context).size.width / 1.29,
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -118,7 +123,7 @@ class SignUpScreen extends StatelessWidget {
                                 Container(
                                   height: 45,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Color(0xFF3C5A9A),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Row(
@@ -135,7 +140,7 @@ class SignUpScreen extends StatelessWidget {
                                       Text(
                                         "Sign up with Facebook",
                                         style: TextStyle(
-                                          color: Colors.black,
+                                          color: Colors.white,
                                           fontSize: 14,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -222,6 +227,60 @@ class SignUpScreen extends StatelessWidget {
                                       ),
                                     ],
                                   ),
+                                ),
+                                Row(
+                                  children: [
+                                    Checkbox(
+                                        value: check,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            check = !check;
+                                          });
+                                        }),
+                                    RichText(
+                                      text: TextSpan(children: [
+                                        TextSpan(
+                                            text: "I agree to ",
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                            )),
+                                        TextSpan(
+                                          text: "Terms",
+                                          style: TextStyle(
+                                            color: Color(0xF217242D),
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                        TextSpan(
+                                            text: " & ",
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                            )),
+                                        TextSpan(
+                                          text: "Conditions",
+                                          style: TextStyle(
+                                            color: Color(0xF217242D),
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ]),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: FloatingActionButton(
+                                          backgroundColor: Color(0xF217242D),
+                                          child: Icon(
+                                              Icons.arrow_forward_ios_outlined),
+                                          onPressed: () {}),
+                                    ),
+                                  ],
                                 )
                               ],
                             ),
