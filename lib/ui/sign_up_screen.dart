@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/ui/sign_in_screen.dart';
@@ -10,9 +11,27 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  TextEditingController _email = new TextEditingController();
+  TextEditingController _pass = new TextEditingController();
+  TextEditingController _cnfpass = new TextEditingController();
+  Color col1 = Colors.white;
+  Color col2 = Color(0xFF008665);
+  Color col = Colors.white;
+  Color colp = Colors.white;
+  Color colcp = Colors.white;
+  bool check = false;
+  var _formKey = GlobalKey<FormState>();
+  bool _isValid() {
+    final isValid = _formKey.currentState!.validate();
+    if (!isValid) {
+      return false;
+    }
+    _formKey.currentState!.save();
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
-    bool check = false;
     return Scaffold(
       body: Container(
         height: double.infinity,
@@ -170,119 +189,221 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 height: 10,
                               ),
                               Container(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Email Address",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w800,
-                                        fontFamily: "IBM",
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                    TextField(
-                                      autofocus: true,
-                                      style: TextStyle(
-                                        color: Color(0xFF008665),
-                                        fontFamily: "IBM",
-                                        fontSize: 16,
-                                      ),
-                                      cursorColor: Color(0xFF008665),
-                                      decoration: InputDecoration(
-                                        prefixIcon: Icon(
-                                          Icons.mail,
+                                child: Form(
+                                  key: _formKey,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Email Address",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w800,
+                                          fontFamily: "IBM",
+                                          fontSize: 14,
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      "Password",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 13,
-                                      ),
-                                    ),
-                                    TextField(
-                                      obscureText: true,
-                                      cursorColor: Color(0xF217242D),
-                                      decoration: InputDecoration(
-                                        prefixIcon: Icon(
-                                          Icons.lock,
-                                          color: Colors.black,
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color(0xF217242D)),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      "Confirm Password",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 13,
-                                      ),
-                                    ),
-                                    TextField(
-                                      obscureText: true,
-                                      cursorColor: Color(0xF217242D),
-                                      decoration: InputDecoration(
-                                        prefixIcon: Icon(
-                                          Icons.lock,
-                                          color: Colors.black,
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color(0xF217242D)),
+                                      Focus(
+                                        onFocusChange: (hasFocus) {
+                                          setState(() {
+                                            col = hasFocus ? col2 : col1;
+                                          });
+                                        },
+                                        child: TextFormField(
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          controller: _email,
+                                          validator: (value) {
+                                            if (value!.isEmpty ||
+                                                !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                                    .hasMatch(value)) {
+                                              return 'Enter a valid email!';
+                                            }
+                                            return null;
+                                          },
+                                          autofocus: true,
+                                          style: TextStyle(
+                                            color: col,
+                                            fontFamily: "IBM",
+                                            fontSize: 16,
+                                          ),
+                                          cursorColor: col2,
+                                          decoration: InputDecoration(
+                                            enabledBorder: UnderlineInputBorder(
+                                              borderSide:
+                                                  BorderSide(color: col),
+                                            ),
+                                            focusedBorder: UnderlineInputBorder(
+                                              borderSide:
+                                                  BorderSide(color: col),
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.mail,
+                                              color: col,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        "Password",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w800,
+                                          fontFamily: "IBM",
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                      Focus(
+                                        onFocusChange: (hasFocus) {
+                                          setState(() {
+                                            colp = hasFocus ? col2 : col1;
+                                          });
+                                        },
+                                        child: TextFormField(
+                                          controller: _pass,
+                                          obscureText: true,
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          autofocus: true,
+                                          style: TextStyle(
+                                            color: colp,
+                                            fontFamily: "IBM",
+                                            fontSize: 16,
+                                          ),
+                                          validator: (value) {
+                                            if (value!.isEmpty) {
+                                              return 'Enter a valid password!';
+                                            }
+                                            return null;
+                                          },
+                                          cursorColor: Color(0xF217242D),
+                                          decoration: InputDecoration(
+                                            enabledBorder: UnderlineInputBorder(
+                                              borderSide:
+                                                  BorderSide(color: colp),
+                                            ),
+                                            focusedBorder: UnderlineInputBorder(
+                                              borderSide:
+                                                  BorderSide(color: colp),
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.lock,
+                                              color: colp,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        "Confirm Password",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w800,
+                                          fontFamily: "IBM",
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                      Focus(
+                                        onFocusChange: (hasFocus) {
+                                          setState(() {
+                                            colcp = hasFocus ? col2 : col1;
+                                          });
+                                        },
+                                        child: TextFormField(
+                                          obscureText: true,
+                                          controller: _cnfpass,
+                                          cursorColor: Color(0xF217242D),
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          autofocus: true,
+                                          style: TextStyle(
+                                            color: colcp,
+                                            fontFamily: "IBM",
+                                            fontSize: 16,
+                                          ),
+                                          validator: (value) {
+                                            if (value != _pass.text) {
+                                              return "Password Mismatch";
+                                            }
+                                            return null;
+                                          },
+                                          decoration: InputDecoration(
+                                            enabledBorder: UnderlineInputBorder(
+                                              borderSide:
+                                                  BorderSide(color: colcp),
+                                            ),
+                                            focusedBorder: UnderlineInputBorder(
+                                              borderSide:
+                                                  BorderSide(color: colcp),
+                                            ),
+                                            prefixIcon: Icon(
+                                              Icons.lock,
+                                              color: colcp,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Row(
                                 children: [
-                                  Checkbox(
-                                      value: check,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          check = !check;
-                                        });
-                                      }),
+                                  Theme(
+                                    data: ThemeData(
+                                        unselectedWidgetColor: Colors.white),
+                                    child: Checkbox(
+                                        value: check,
+                                        checkColor: col2,
+                                        activeColor: Colors.white,
+                                        onChanged: (val) {
+                                          setState(() {
+                                            check = !check;
+                                            print(check);
+                                          });
+                                        }),
+                                  ),
                                   RichText(
                                     text: TextSpan(children: [
                                       TextSpan(
-                                          text: "I agree to ",
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 14,
-                                          )),
-                                      TextSpan(
-                                        text: "Terms",
+                                        text: "I agree to ",
                                         style: TextStyle(
-                                          color: Color(0xF217242D),
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w800,
+                                          fontFamily: "IBM",
                                           fontSize: 14,
                                         ),
                                       ),
                                       TextSpan(
-                                          text: " & ",
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 14,
-                                          )),
+                                        text: "Terms",
+                                        style: TextStyle(
+                                          color: col2,
+                                          fontWeight: FontWeight.w800,
+                                          fontFamily: "IBM",
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: " & ",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w800,
+                                          fontFamily: "IBM",
+                                          fontSize: 14,
+                                        ),
+                                      ),
                                       TextSpan(
                                         text: "Conditions",
                                         style: TextStyle(
-                                          color: Color(0xF217242D),
+                                          color: col2,
+                                          fontWeight: FontWeight.w800,
+                                          fontFamily: "IBM",
                                           fontSize: 14,
                                         ),
                                       ),
@@ -296,10 +417,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 8.0),
                                     child: FloatingActionButton(
-                                        backgroundColor: Color(0xFF2A3D66),
-                                        child: Icon(
-                                            Icons.arrow_forward_ios_outlined),
-                                        onPressed: () {}),
+                                      backgroundColor: col2,
+                                      child: Icon(
+                                          Icons.arrow_forward_ios_outlined),
+                                      onPressed: () {
+                                        if (_isValid()) {
+                                          print("Ready to go!!");
+                                        } else {
+                                          print("Errros!!");
+                                        }
+                                      },
+                                    ),
                                   ),
                                 ],
                               )
