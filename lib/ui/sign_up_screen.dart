@@ -14,25 +14,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     bool check = false;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Travelling App"),
-        backgroundColor: Color(0xF217242D),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage("assets/images/sign.jpg"),
-            )),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+          fit: BoxFit.fill,
+          alignment: Alignment.topCenter,
+          image: ExactAssetImage("assets/images/sign.jpg"),
+        )),
+        child: Stack(children: [
+          SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.only(top: 25),
+              // padding: EdgeInsets.only(top: 25),
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
@@ -46,10 +44,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Get Started",
+                          "Get Started.",
                           style: TextStyle(
                               color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w700,
                               fontSize: 20,
                               fontFamily: 'IBM'),
                         ),
@@ -62,12 +60,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
+                                    fontFamily: "IBM",
+                                    fontWeight: FontWeight.w800,
                                   )),
                               TextSpan(
                                   text: "Log in",
                                   style: TextStyle(
-                                    color: Color(0xF217242D),
+                                    color: Color(0xFF008665),
                                     fontSize: 14,
+                                    fontWeight: FontWeight.w800,
                                   ),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
@@ -87,62 +88,84 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height: 45,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.all(8),
-                                      child: Image(
-                                          fit: BoxFit.cover,
-                                          image: AssetImage(
-                                              "assets/icons/google.png")),
-                                    ),
-                                    Text(
-                                      "Sign up with Google",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
+                                  // height: 100,
+                                  width: double.infinity,
+                                  // color: Colors.blue,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "OR",
+                                        style: TextStyle(
+                                          fontFamily: "IBM",
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w800,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Container(
-                                height: 45,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF3C5A9A),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.all(8),
-                                      child: Image(
-                                          fit: BoxFit.cover,
-                                          image: AssetImage(
-                                              "assets/icons/facebook.png")),
-                                    ),
-                                    Text(
-                                      "Sign up with Facebook",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 8.0),
+                                        child: Text(
+                                          "Sign up with:",
+                                          style: TextStyle(
+                                            fontFamily: "IBM",
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w800,
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 10.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                print("Press Google");
+                                              },
+                                              child: Container(
+                                                height: 45,
+                                                width: 45,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                    image: ExactAssetImage(
+                                                        "assets/icons/google.png"),
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                              ),
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                print("facebook");
+                                              },
+                                              child: Container(
+                                                height: 45,
+                                                width: 45,
+                                                decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                      image: ExactAssetImage(
+                                                          "assets/icons/facebook.png"),
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    color: Colors.blue),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  )),
                               SizedBox(
                                 height: 10,
                               ),
@@ -153,21 +176,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     Text(
                                       "Email Address",
                                       style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 13,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w800,
+                                        fontFamily: "IBM",
+                                        fontSize: 14,
                                       ),
                                     ),
                                     TextField(
-                                      cursorColor: Color(0xF217242D),
+                                      autofocus: true,
+                                      style: TextStyle(
+                                        color: Color(0xFF008665),
+                                        fontFamily: "IBM",
+                                        fontSize: 16,
+                                      ),
+                                      cursorColor: Color(0xFF008665),
                                       decoration: InputDecoration(
                                         prefixIcon: Icon(
                                           Icons.mail,
-                                          color: Colors.black,
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color(0xF217242D)),
                                         ),
                                       ),
                                     ),
@@ -286,7 +311,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   )
                 ],
               ),
-            )),
+            ),
+          ),
+        ]),
       ),
     );
   }

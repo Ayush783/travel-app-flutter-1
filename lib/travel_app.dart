@@ -11,6 +11,7 @@ class TravelApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Travel App',
+      theme: ThemeData(primaryColor: Color(0xFF008665)),
       home: MyHomePage(),
     );
   }

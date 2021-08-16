@@ -3,8 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:travel_app/travel_app.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-  ));
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(TravelApp());
 }
