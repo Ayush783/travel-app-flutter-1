@@ -12,10 +12,16 @@ class UserModel {
       this.errorMessage = 'NO_ERROR'});
 
   //sign up failure constructor
-  UserModel.signUpFailure({@required String? errorMessage})
+  UserModel.failure({@required String? errorMessage})
       : user = null,
         error = true,
         errorMessage = errorMessage;
+
+  //sent email verification constructor
+  UserModel.sentEmailLink()
+      : user = null,
+        error = false,
+        errorMessage = 'NO_ERROR';
 
   //email not verified constructor
   UserModel.unverifiedEmail()

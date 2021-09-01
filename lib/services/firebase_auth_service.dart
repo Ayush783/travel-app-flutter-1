@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:travel_app/models/user_model.dart';
 
 class FirebaseaAuthService {
   static final _auth = FirebaseAuth.instance;
 
   //sign in with email
-  Future<User> signInWithEmail(String email, String password) async {
+  Future<UserModel> signInWithEmail(String email, String password) async {
     try {
       //sign in
       final userCredential = await _auth.signInWithEmailAndPassword(
@@ -13,21 +14,21 @@ class FirebaseaAuthService {
       bool isVerifired = this.checkEmailVerification(userCredential.user);
       //sign in or give error
       if (isVerifired)
-        return userCredential.user!;
+        return UserModel(user: userCredential.user);
       else {
         //sign out
         await this.signOut();
         //throw error instead this
-        return userCredential.user!;
+        return UserModel.unverifiedEmail();
       }
     } on FirebaseAuthException catch (e) {
-      //handle exception instead vof throwing exception
-      throw FirebaseAuthException(code: e.code);
+      //handle exception
+      return UserModel.failure(errorMessage: e.code);
     }
   }
 
   //sign up with email
-  Future<User> signUpWithEmail(String email, String password) async {
+  Future<UserModel> signUpWithEmail(String email, String password) async {
     try {
       //sign up
       final userCredential = await _auth.createUserWithEmailAndPassword(
@@ -36,10 +37,10 @@ class FirebaseaAuthService {
       await this.sendVerifyEmailLink(userCredential.user);
       //sign out so that user can sign in again after email verification
       await this.signOut();
-      return userCredential.user!;
+      return UserModel.sentEmailLink();
     } on FirebaseAuthException catch (e) {
-      //handle exception instead vof throwing exception
-      throw FirebaseAuthException(code: e.code);
+      //handle exception
+      throw UserModel.failure(errorMessage: e.code);
     }
   }
 
