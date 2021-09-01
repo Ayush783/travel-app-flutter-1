@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:travel_app/constants/const_colors.dart';
 import 'package:travel_app/ui/sign_in_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -14,12 +15,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _email = new TextEditingController();
   TextEditingController _pass = new TextEditingController();
   TextEditingController _cnfpass = new TextEditingController();
-  Color col1 = Colors.white;
-  Color col2 = Color(0xFF008665);
-  Color col = Colors.white;
-  Color colp = Colors.white;
-  Color colcp = Colors.white;
   bool check = false;
+  Color col = whi;
+  Color colp = whi;
+  Color colcp = whi;
   var _formKey = GlobalKey<FormState>();
   bool _isValid() {
     final isValid = _formKey.currentState!.validate();
@@ -207,7 +206,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
-                                            col = hasFocus ? col2 : col1;
+                                            col = hasFocus ? gre : whi;
                                           });
                                         },
                                         child: TextFormField(
@@ -228,7 +227,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             fontFamily: "IBM",
                                             fontSize: 16,
                                           ),
-                                          cursorColor: col2,
+                                          cursorColor: gre,
                                           decoration: InputDecoration(
                                             enabledBorder: UnderlineInputBorder(
                                               borderSide:
@@ -260,7 +259,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
-                                            colp = hasFocus ? col2 : col1;
+                                            colp = hasFocus ? gre : whi;
                                           });
                                         },
                                         child: TextFormField(
@@ -312,7 +311,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
-                                            colcp = hasFocus ? col2 : col1;
+                                            colcp = hasFocus ? gre : whi;
                                           });
                                         },
                                         child: TextFormField(
@@ -360,7 +359,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         unselectedWidgetColor: Colors.white),
                                     child: Checkbox(
                                         value: check,
-                                        checkColor: col2,
+                                        checkColor: gre,
                                         activeColor: Colors.white,
                                         onChanged: (val) {
                                           setState(() {
@@ -383,7 +382,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       TextSpan(
                                         text: "Terms",
                                         style: TextStyle(
-                                          color: col2,
+                                          color: gre,
                                           fontWeight: FontWeight.w800,
                                           fontFamily: "IBM",
                                           fontSize: 14,
@@ -401,7 +400,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       TextSpan(
                                         text: "Conditions",
                                         style: TextStyle(
-                                          color: col2,
+                                          color: gre,
                                           fontWeight: FontWeight.w800,
                                           fontFamily: "IBM",
                                           fontSize: 14,
@@ -417,7 +416,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 8.0),
                                     child: FloatingActionButton(
-                                      backgroundColor: col2,
+                                      backgroundColor: gre,
                                       child: Icon(
                                           Icons.arrow_forward_ios_outlined),
                                       onPressed: () {
