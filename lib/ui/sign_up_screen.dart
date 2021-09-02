@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/constants/const_colors.dart';
+import 'package:travel_app/constants/const_decorations.dart';
+import 'package:travel_app/constants/const_textstyles.dart';
 import 'package:travel_app/ui/sign_in_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -61,33 +63,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Get Started.",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 20,
-                              fontFamily: 'IBM'),
-                        ),
+                        Text("Get Started.",
+                            style:
+                                styleText(Colors.white, FontWeight.w700, 20)),
                         Padding(
                           padding: const EdgeInsets.only(top: 8),
                           child: RichText(
                             text: TextSpan(children: [
                               TextSpan(
                                   text: "Already have an account? ",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontFamily: "IBM",
-                                    fontWeight: FontWeight.w800,
-                                  )),
+                                  style: styleText(whi, FontWeight.w800, 14)),
                               TextSpan(
                                   text: "Log in",
-                                  style: TextStyle(
-                                    color: Color(0xFF008665),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w800,
-                                  ),
+                                  style: styleText(gre, FontWeight.w800, 14),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
                                       Navigator.of(context).push(
@@ -115,25 +103,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     children: [
                                       Text(
                                         "OR",
-                                        style: TextStyle(
-                                          fontFamily: "IBM",
-                                          color: Colors.white,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w800,
-                                        ),
+                                        style:
+                                            styleText(whi, FontWeight.w800, 14),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 8.0),
-                                        child: Text(
-                                          "Sign up with:",
-                                          style: TextStyle(
-                                            fontFamily: "IBM",
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
+                                        child: Text("Sign up with:",
+                                            style: styleText(
+                                                whi, FontWeight.w800, 14)),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -194,15 +172,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        "Email Address",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w800,
-                                          fontFamily: "IBM",
-                                          fontSize: 14,
-                                        ),
-                                      ),
+                                      Text("Email Address",
+                                          style: styleText(
+                                              whi, FontWeight.w800, 14)),
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
@@ -222,26 +194,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             return null;
                                           },
                                           autofocus: true,
-                                          style: TextStyle(
-                                            color: col,
-                                            fontFamily: "IBM",
-                                            fontSize: 16,
-                                          ),
+                                          style: styleText(
+                                              col, FontWeight.normal, 16),
                                           cursorColor: gre,
-                                          decoration: InputDecoration(
-                                            enabledBorder: UnderlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: col),
-                                            ),
-                                            focusedBorder: UnderlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: col),
-                                            ),
-                                            prefixIcon: Icon(
-                                              Icons.mail,
-                                              color: col,
-                                            ),
-                                          ),
+                                          decoration:
+                                              fieldText(col, Icons.mail),
                                         ),
                                       ),
                                       SizedBox(
@@ -249,12 +206,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       ),
                                       Text(
                                         "Password",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w800,
-                                          fontFamily: "IBM",
-                                          fontSize: 14,
-                                        ),
+                                        style:
+                                            styleText(whi, FontWeight.w800, 14),
                                       ),
                                       Focus(
                                         onFocusChange: (hasFocus) {
@@ -263,51 +216,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           });
                                         },
                                         child: TextFormField(
-                                          controller: _pass,
-                                          obscureText: true,
-                                          keyboardType:
-                                              TextInputType.emailAddress,
-                                          autofocus: true,
-                                          style: TextStyle(
-                                            color: colp,
-                                            fontFamily: "IBM",
-                                            fontSize: 16,
-                                          ),
-                                          validator: (value) {
-                                            if (value!.isEmpty) {
-                                              return 'Enter a valid password!';
-                                            }
-                                            return null;
-                                          },
-                                          cursorColor: Color(0xF217242D),
-                                          decoration: InputDecoration(
-                                            enabledBorder: UnderlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: colp),
-                                            ),
-                                            focusedBorder: UnderlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: colp),
-                                            ),
-                                            prefixIcon: Icon(
-                                              Icons.lock,
-                                              color: colp,
-                                            ),
-                                          ),
-                                        ),
+                                            controller: _pass,
+                                            obscureText: true,
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            autofocus: true,
+                                            style: styleText(
+                                                colp, FontWeight.normal, 16),
+                                            validator: (value) {
+                                              if (value!.isEmpty) {
+                                                return 'Enter a valid password!';
+                                              }
+                                              return null;
+                                            },
+                                            cursorColor: gre,
+                                            decoration:
+                                                fieldText(colp, Icons.lock)),
                                       ),
                                       SizedBox(
                                         height: 10,
                                       ),
-                                      Text(
-                                        "Confirm Password",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w800,
-                                          fontFamily: "IBM",
-                                          fontSize: 14,
-                                        ),
-                                      ),
+                                      Text("Confirm Password",
+                                          style: styleText(
+                                              whi, FontWeight.w800, 14)),
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
@@ -315,38 +246,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           });
                                         },
                                         child: TextFormField(
-                                          obscureText: true,
-                                          controller: _cnfpass,
-                                          cursorColor: Color(0xF217242D),
-                                          keyboardType:
-                                              TextInputType.emailAddress,
-                                          autofocus: true,
-                                          style: TextStyle(
-                                            color: colcp,
-                                            fontFamily: "IBM",
-                                            fontSize: 16,
-                                          ),
-                                          validator: (value) {
-                                            if (value != _pass.text) {
-                                              return "Password Mismatch";
-                                            }
-                                            return null;
-                                          },
-                                          decoration: InputDecoration(
-                                            enabledBorder: UnderlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: colcp),
-                                            ),
-                                            focusedBorder: UnderlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: colcp),
-                                            ),
-                                            prefixIcon: Icon(
-                                              Icons.lock,
-                                              color: colcp,
-                                            ),
-                                          ),
-                                        ),
+                                            obscureText: true,
+                                            controller: _cnfpass,
+                                            cursorColor: Color(0xF217242D),
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            autofocus: true,
+                                            style: styleText(
+                                                colcp, FontWeight.normal, 16),
+                                            validator: (value) {
+                                              if (value != _pass.text) {
+                                                return "Password Mismatch";
+                                              }
+                                              return null;
+                                            },
+                                            decoration:
+                                                fieldText(colcp, Icons.lock)),
                                       ),
                                     ],
                                   ),
@@ -355,12 +270,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Row(
                                 children: [
                                   Theme(
-                                    data: ThemeData(
-                                        unselectedWidgetColor: Colors.white),
+                                    data: ThemeData(unselectedWidgetColor: whi),
                                     child: Checkbox(
                                         value: check,
                                         checkColor: gre,
-                                        activeColor: Colors.white,
+                                        activeColor: whi,
                                         onChanged: (val) {
                                           setState(() {
                                             check = !check;
@@ -372,39 +286,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     text: TextSpan(children: [
                                       TextSpan(
                                         text: "I agree to ",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w800,
-                                          fontFamily: "IBM",
-                                          fontSize: 14,
-                                        ),
+                                        style:
+                                            styleText(whi, FontWeight.w800, 14),
                                       ),
                                       TextSpan(
                                         text: "Terms",
-                                        style: TextStyle(
-                                          color: gre,
-                                          fontWeight: FontWeight.w800,
-                                          fontFamily: "IBM",
-                                          fontSize: 14,
-                                        ),
+                                        style:
+                                            styleText(gre, FontWeight.w800, 14),
                                       ),
                                       TextSpan(
                                         text: " & ",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w800,
-                                          fontFamily: "IBM",
-                                          fontSize: 14,
-                                        ),
+                                        style:
+                                            styleText(whi, FontWeight.w800, 14),
                                       ),
                                       TextSpan(
                                         text: "Conditions",
-                                        style: TextStyle(
-                                          color: gre,
-                                          fontWeight: FontWeight.w800,
-                                          fontFamily: "IBM",
-                                          fontSize: 14,
-                                        ),
+                                        style:
+                                            styleText(gre, FontWeight.w800, 14),
                                       ),
                                     ]),
                                   ),

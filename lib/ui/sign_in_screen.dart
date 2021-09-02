@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:travel_app/constants/const_colors.dart';
+import 'package:travel_app/ui/sign_up_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -78,7 +79,13 @@ class _SignInScreenState extends State<SignInScreen> {
                                     fontWeight: FontWeight.w800,
                                   ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () {})
+                                    ..onTap = () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SignUpScreen()));
+                                    })
                             ]),
                           ),
                         ),
