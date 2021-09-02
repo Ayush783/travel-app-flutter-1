@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
+import 'package:travel_app/constants/const_colors.dart';
+import 'package:travel_app/ui/sign_up_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -13,10 +15,8 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   TextEditingController _email = new TextEditingController();
   TextEditingController _pass = new TextEditingController();
-  Color _col1 = Colors.white;
-  Color _col2 = Color(0xFF008665);
-  Color _col = Colors.white;
-  Color _colp = Colors.white;
+  Color _col = whi;
+  Color _colp = whi;
   var _formKey1 = GlobalKey<FormState>();
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +79,13 @@ class _SignInScreenState extends State<SignInScreen> {
                                     fontWeight: FontWeight.w800,
                                   ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () {})
+                                    ..onTap = () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SignUpScreen()));
+                                    })
                             ]),
                           ),
                         ),
@@ -191,7 +197,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
-                                            _col = hasFocus ? _col2 : _col1;
+                                            _col = hasFocus ? gre : whi;
                                           });
                                         },
                                         child: TextFormField(
@@ -212,7 +218,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                             fontFamily: "IBM",
                                             fontSize: 16,
                                           ),
-                                          cursorColor: _col2,
+                                          cursorColor: gre,
                                           decoration: InputDecoration(
                                             enabledBorder: UnderlineInputBorder(
                                               borderSide:
@@ -244,7 +250,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
-                                            _colp = hasFocus ? _col2 : _col1;
+                                            _colp = hasFocus ? gre : whi;
                                           });
                                         },
                                         child: TextFormField(
@@ -289,7 +295,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       TextSpan(
                                         text: "Forgot password?",
                                         style: TextStyle(
-                                          color: _col2,
+                                          color: gre,
                                           fontWeight: FontWeight.w800,
                                           fontFamily: "IBM",
                                           fontSize: 14,
@@ -305,7 +311,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 8.0),
                                     child: FloatingActionButton(
-                                      backgroundColor: _col2,
+                                      backgroundColor: gre,
                                       child: Icon(
                                           Icons.arrow_forward_ios_outlined),
                                       onPressed: () {},
