@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:travel_app/constants/const_colors.dart';
+import 'package:travel_app/constants/const_decorations.dart';
+import 'package:travel_app/constants/const_textstyles.dart';
 import 'package:travel_app/ui/sign_up_screen.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -50,14 +52,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Wrap(children: [
-                          Text(
-                            "Login and explore your favourite destinations.",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 20,
-                                fontFamily: 'IBM'),
-                          ),
+                          Text("Login and explore your favourite destinations.",
+                              style: styleText(whi, FontWeight.w700, 20)),
                         ]),
                         Padding(
                           padding: const EdgeInsets.only(top: 10),
@@ -65,19 +61,10 @@ class _SignInScreenState extends State<SignInScreen> {
                             text: TextSpan(children: [
                               TextSpan(
                                   text: "Don't have an account? ",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontFamily: "IBM",
-                                    fontWeight: FontWeight.w800,
-                                  )),
+                                  style: styleText(whi, FontWeight.w800, 14)),
                               TextSpan(
                                   text: "Sign up",
-                                  style: TextStyle(
-                                    color: Color(0xFF008665),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w800,
-                                  ),
+                                  style: styleText(gre, FontWeight.w800, 14),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
                                       Navigator.push(
@@ -106,25 +93,15 @@ class _SignInScreenState extends State<SignInScreen> {
                                     children: [
                                       Text(
                                         "OR",
-                                        style: TextStyle(
-                                          fontFamily: "IBM",
-                                          color: Colors.white,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w800,
-                                        ),
+                                        style:
+                                            styleText(whi, FontWeight.w800, 14),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 8.0),
-                                        child: Text(
-                                          "Log in via:",
-                                          style: TextStyle(
-                                            fontFamily: "IBM",
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
+                                        child: Text("Log in via:",
+                                            style: styleText(
+                                                whi, FontWeight.w800, 14)),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -185,15 +162,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        "Email Address",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w800,
-                                          fontFamily: "IBM",
-                                          fontSize: 14,
-                                        ),
-                                      ),
+                                      Text("Email Address",
+                                          style: styleText(
+                                              whi, FontWeight.w800, 14)),
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
@@ -213,26 +184,11 @@ class _SignInScreenState extends State<SignInScreen> {
                                             return null;
                                           },
                                           autofocus: true,
-                                          style: TextStyle(
-                                            color: _col,
-                                            fontFamily: "IBM",
-                                            fontSize: 16,
-                                          ),
+                                          style: styleText(
+                                              _col, FontWeight.normal, 16),
                                           cursorColor: gre,
-                                          decoration: InputDecoration(
-                                            enabledBorder: UnderlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: _col),
-                                            ),
-                                            focusedBorder: UnderlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: _col),
-                                            ),
-                                            prefixIcon: Icon(
-                                              Icons.mail,
-                                              color: _col,
-                                            ),
-                                          ),
+                                          decoration:
+                                              fieldText(_col, Icons.mail),
                                         ),
                                       ),
                                       SizedBox(
@@ -240,12 +196,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                       ),
                                       Text(
                                         "Password",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w800,
-                                          fontFamily: "IBM",
-                                          fontSize: 14,
-                                        ),
+                                        style:
+                                            styleText(whi, FontWeight.w800, 14),
                                       ),
                                       Focus(
                                         onFocusChange: (hasFocus) {
@@ -254,32 +206,19 @@ class _SignInScreenState extends State<SignInScreen> {
                                           });
                                         },
                                         child: TextFormField(
-                                          controller: _pass,
-                                          obscureText: true,
-                                          keyboardType:
-                                              TextInputType.emailAddress,
-                                          autofocus: true,
-                                          style: TextStyle(
-                                            color: _colp,
-                                            fontFamily: "IBM",
-                                            fontSize: 16,
-                                          ),
-                                          cursorColor: Color(0xF217242D),
-                                          decoration: InputDecoration(
-                                            enabledBorder: UnderlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: _colp),
-                                            ),
-                                            focusedBorder: UnderlineInputBorder(
-                                              borderSide:
-                                                  BorderSide(color: _colp),
-                                            ),
-                                            prefixIcon: Icon(
-                                              Icons.lock,
+                                            controller: _pass,
+                                            obscureText: true,
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            autofocus: true,
+                                            style: TextStyle(
                                               color: _colp,
+                                              fontFamily: "IBM",
+                                              fontSize: 16,
                                             ),
-                                          ),
-                                        ),
+                                            cursorColor: Color(0xF217242D),
+                                            decoration:
+                                                fieldText(_colp, Icons.lock)),
                                       ),
                                     ],
                                   ),
@@ -294,12 +233,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                     text: TextSpan(children: [
                                       TextSpan(
                                         text: "Forgot password?",
-                                        style: TextStyle(
-                                          color: gre,
-                                          fontWeight: FontWeight.w800,
-                                          fontFamily: "IBM",
-                                          fontSize: 14,
-                                        ),
+                                        style:
+                                            styleText(gre, FontWeight.w800, 14),
                                       ),
                                     ]),
                                   ),
