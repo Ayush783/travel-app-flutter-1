@@ -18,9 +18,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _pass = new TextEditingController();
   TextEditingController _cnfpass = new TextEditingController();
   bool check = false;
-  Color col = whi;
-  Color colp = whi;
-  Color colcp = whi;
+  Color col = white;
+  Color colp = white;
+  Color colcp = white;
   var _formKey = GlobalKey<FormState>();
   bool _isValid() {
     final isValid = _formKey.currentState!.validate();
@@ -72,15 +72,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             text: TextSpan(children: [
                               TextSpan(
                                   text: "Already have an account? ",
-                                  style: styleText(whi, FontWeight.w800, 14)),
+                                  style: styleText(white, FontWeight.w800, 14)),
                               TextSpan(
                                   text: "Log in",
-                                  style: styleText(gre, FontWeight.w800, 14),
+                                  style: styleText(green, FontWeight.w800, 14),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
-                                              builder: (BuildContext) =>
+                                              builder: (context) =>
                                                   SignInScreen()));
                                     })
                             ]),
@@ -103,15 +103,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     children: [
                                       Text(
                                         "OR",
-                                        style:
-                                            styleText(whi, FontWeight.w800, 14),
+                                        style: styleText(
+                                            white, FontWeight.w800, 14),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 8.0),
                                         child: Text("Sign up with:",
                                             style: styleText(
-                                                whi, FontWeight.w800, 14)),
+                                                white, FontWeight.w800, 14)),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -174,11 +174,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     children: [
                                       Text("Email Address",
                                           style: styleText(
-                                              whi, FontWeight.w800, 14)),
+                                              white, FontWeight.w800, 14)),
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
-                                            col = hasFocus ? gre : whi;
+                                            col = hasFocus ? green : white;
                                           });
                                         },
                                         child: TextFormField(
@@ -196,7 +196,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           autofocus: true,
                                           style: styleText(
                                               col, FontWeight.normal, 16),
-                                          cursorColor: gre,
+                                          cursorColor: green,
                                           decoration:
                                               fieldText(col, Icons.mail),
                                         ),
@@ -206,13 +206,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       ),
                                       Text(
                                         "Password",
-                                        style:
-                                            styleText(whi, FontWeight.w800, 14),
+                                        style: styleText(
+                                            white, FontWeight.w800, 14),
                                       ),
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
-                                            colp = hasFocus ? gre : whi;
+                                            colp = hasFocus ? green : white;
                                           });
                                         },
                                         child: TextFormField(
@@ -229,7 +229,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               }
                                               return null;
                                             },
-                                            cursorColor: gre,
+                                            cursorColor: green,
                                             decoration:
                                                 fieldText(colp, Icons.lock)),
                                       ),
@@ -238,11 +238,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       ),
                                       Text("Confirm Password",
                                           style: styleText(
-                                              whi, FontWeight.w800, 14)),
+                                              white, FontWeight.w800, 14)),
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
-                                            colcp = hasFocus ? gre : whi;
+                                            colcp = hasFocus ? green : white;
                                           });
                                         },
                                         child: TextFormField(
@@ -270,11 +270,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Row(
                                 children: [
                                   Theme(
-                                    data: ThemeData(unselectedWidgetColor: whi),
+                                    data:
+                                        ThemeData(unselectedWidgetColor: white),
                                     child: Checkbox(
                                         value: check,
-                                        checkColor: gre,
-                                        activeColor: whi,
+                                        checkColor: green,
+                                        activeColor: white,
                                         onChanged: (val) {
                                           setState(() {
                                             check = !check;
@@ -286,23 +287,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     text: TextSpan(children: [
                                       TextSpan(
                                         text: "I agree to ",
-                                        style:
-                                            styleText(whi, FontWeight.w800, 14),
+                                        style: styleText(
+                                            white, FontWeight.w800, 14),
                                       ),
                                       TextSpan(
                                         text: "Terms",
-                                        style:
-                                            styleText(gre, FontWeight.w800, 14),
+                                        style: styleText(
+                                            green, FontWeight.w800, 14),
                                       ),
                                       TextSpan(
                                         text: " & ",
-                                        style:
-                                            styleText(whi, FontWeight.w800, 14),
+                                        style: styleText(
+                                            white, FontWeight.w800, 14),
                                       ),
                                       TextSpan(
                                         text: "Conditions",
-                                        style:
-                                            styleText(gre, FontWeight.w800, 14),
+                                        style: styleText(
+                                            green, FontWeight.w800, 14),
                                       ),
                                     ]),
                                   ),
@@ -314,7 +315,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 8.0),
                                     child: FloatingActionButton(
-                                      backgroundColor: gre,
+                                      backgroundColor: green,
                                       child: Icon(
                                           Icons.arrow_forward_ios_outlined),
                                       onPressed: () {

@@ -12,12 +12,12 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  @override
   TextEditingController _email = new TextEditingController();
   TextEditingController _pass = new TextEditingController();
-  Color _col = whi;
-  Color _colp = whi;
+  Color _col = white;
+  Color _colp = white;
   var _formKey1 = GlobalKey<FormState>();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -197,7 +197,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
-                                            _col = hasFocus ? gre : whi;
+                                            _col = hasFocus ? green : white;
                                           });
                                         },
                                         child: TextFormField(
@@ -218,7 +218,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                             fontFamily: "IBM",
                                             fontSize: 16,
                                           ),
-                                          cursorColor: gre,
+                                          cursorColor: green,
                                           decoration: InputDecoration(
                                             enabledBorder: UnderlineInputBorder(
                                               borderSide:
@@ -250,7 +250,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
-                                            _colp = hasFocus ? gre : whi;
+                                            _colp = hasFocus ? green : white;
                                           });
                                         },
                                         child: TextFormField(
@@ -295,7 +295,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       TextSpan(
                                         text: "Forgot password?",
                                         style: TextStyle(
-                                          color: gre,
+                                          color: green,
                                           fontWeight: FontWeight.w800,
                                           fontFamily: "IBM",
                                           fontSize: 14,
@@ -311,7 +311,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 8.0),
                                     child: FloatingActionButton(
-                                      backgroundColor: gre,
+                                      backgroundColor: green,
                                       child: Icon(
                                           Icons.arrow_forward_ios_outlined),
                                       onPressed: () {},
