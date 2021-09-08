@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:travel_app/constants/const_colors.dart';
 import 'package:travel_app/constants/const_decorations.dart';
 import 'package:travel_app/constants/const_textstyles.dart';
@@ -127,12 +128,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               child: Container(
                                                 height: 45,
                                                 width: 45,
+                                                child: SvgPicture.asset(
+                                                  "assets/icons/facebook.svg",
+                                                  fit: BoxFit.fill,
+                                                ),
                                                 decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: ExactAssetImage(
-                                                        "assets/icons/google.png"),
-                                                    fit: BoxFit.cover,
-                                                  ),
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
@@ -145,12 +145,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               child: Container(
                                                 height: 45,
                                                 width: 45,
+                                                child: SvgPicture.asset(
+                                                    "assets/icons/facebook.svg"),
                                                 decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      image: ExactAssetImage(
-                                                          "assets/icons/facebook.png"),
-                                                      fit: BoxFit.cover,
-                                                    ),
+                                                    // image: DecorationImage(
+                                                    //   image: ExactAssetImage(
+                                                    //       "assets/icons/facebook.png"),
+                                                    //   fit: BoxFit.cover,
+                                                    // ),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10),
