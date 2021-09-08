@@ -14,12 +14,12 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  @override
   TextEditingController _email = new TextEditingController();
   TextEditingController _pass = new TextEditingController();
   Color _col = whi;
   Color _colp = whi;
   var _formKey1 = GlobalKey<FormState>();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(

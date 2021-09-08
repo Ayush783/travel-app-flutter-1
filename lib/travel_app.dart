@@ -36,7 +36,7 @@ class MyHomePage extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (BuildContext) => SignUpScreen()));
+                                  builder: (context) => SignUpScreen()));
                         },
                         child: Text("Sign Up")),
                     FlatButton(
@@ -44,7 +44,7 @@ class MyHomePage extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (BuildContext) => SignInScreen()));
+                                  builder: (context) => SignInScreen()));
                         },
                         child: Text("Sign In")),
                   ],
