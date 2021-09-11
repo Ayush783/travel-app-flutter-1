@@ -11,47 +11,7 @@ class TravelApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Travel App',
       theme: ThemeData(primaryColor: Color(0xFF008665)),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                  child: Container(
-                child: Column(
-                  children: [
-                    FlatButton(
-                        color: Colors.blue,
-                        onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => SignUpScreen()));
-                        },
-                        child: Text("Sign Up")),
-                    FlatButton(
-                        color: Colors.blue,
-                        onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => SignInScreen()));
-                        },
-                        child: Text("Sign In")),
-                  ],
-                ),
-              )),
-            ],
-          )),
+      home: SignUpScreen(),
     );
   }
 }
