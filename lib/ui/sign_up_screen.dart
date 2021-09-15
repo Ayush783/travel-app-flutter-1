@@ -128,7 +128,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               child: Container(
                                                 height: 45,
                                                 width: 45,
-                                                child: SvgPicture.asset(s
+                                                child: SvgPicture.asset(
                                                   "assets/icons/google.svg",
                                                   fit: BoxFit.fill,
                                                 ),
