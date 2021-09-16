@@ -15,55 +15,98 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+        backgroundColor: white,
         body: Column(
-      children: [
-        Container(
-          height: 250,
-          width: size.width,
-          padding: EdgeInsets.all(25),
-          decoration: BoxDecoration(
-            color: green_light,
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
-          ),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              // height: 250,
+              width: size.width,
+              padding: EdgeInsets.all(25),
+              decoration: BoxDecoration(
+                color: green_light,
+                borderRadius:
+                    BorderRadius.only(bottomLeft: Radius.circular(50)),
+              ),
+              child: Column(
                 children: [
-                  InkWell(
-                      onTap: () {
-                        print("Show Drawer");
-                      },
-                      child: SvgPicture.asset("assets/icons/user-female.svg")),
-                  InkWell(
-                    onTap: () {
-                      print("Sign Out");
-                    },
-                    child: Container(
-                        height: 50,
-                        width: 50,
-                        child: SvgPicture.asset(
-                          "assets/icons/signout.svg",
-                          fit: BoxFit.fill,
-                        )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                          onTap: () {
+                            print("Show Drawer");
+                          },
+                          child:
+                              SvgPicture.asset("assets/icons/user-female.svg")),
+                      InkWell(
+                        onTap: () {
+                          print("Sign Out");
+                        },
+                        child: Container(
+                            height: 50,
+                            width: 50,
+                            child: SvgPicture.asset(
+                              "assets/icons/signout.svg",
+                              fit: BoxFit.fill,
+                            )),
+                      ),
+                    ],
+                  ),
+                  Wrap(
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 28, vertical: 28),
+                        child: Text(
+                          "Need a vacation? Don't Worry we got you",
+                          style: headingStyle(),
+                        ),
+                      )
+                    ],
+                  ),
+                  Container(
+                    height: 50,
+                    width: double.infinity,
+                    child: Text(
+                      "Search Box",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ],
               ),
-              Wrap(
+            ),
+            ColoredBox(
+              color: green_light,
+              child: Container(
+                height: 50,
+                width: size.width,
+                // color: green_light,
+                decoration: BoxDecoration(
+                    color: white,
+                    borderRadius:
+                        BorderRadius.only(topRight: Radius.circular(50))),
+              ),
+            ),
+            Container(
+              width: size.width,
+              padding: EdgeInsets.only(bottom: 25, left: 25, right: 25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(28),
-                    child: Text(
-                      "Need a vacation? Don't Worry we got you",
-                      style: headingStyle(),
-                    ),
+                  Text(
+                    "Categories",
+                    style: headingStyle(),
                   )
                 ],
-              )
-            ],
-          ),
-        )
-      ],
-    ));
+              ),
+            )
+          ],
+        ));
   }
 }

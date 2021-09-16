@@ -48,6 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           SingleChildScrollView(
             child: Container(
               // padding: EdgeInsets.only(top: 25),
+              
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: Column(
@@ -64,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Get Started.",
+                        Text("Get started.",
                             style:
                                 styleText(Colors.white, FontWeight.w700, 20)),
                         Padding(
