@@ -12,7 +12,7 @@ class TravelApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Travel App',
       theme: ThemeData(primaryColor: Color(0xFF008665)),
-      home: SignUpScreen(),
+      home: HomeScreen(),
     );
   }
 }
