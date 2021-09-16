@@ -17,8 +17,8 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController _email = new TextEditingController();
   TextEditingController _pass = new TextEditingController();
-  Color _col = whi;
-  Color _colp = whi;
+  Color _col = white;
+  Color _colp = white;
   var _formKey1 = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       children: [
                         Wrap(children: [
                           Text("Login and explore your favourite destinations.",
-                              style: styleText(whi, FontWeight.w700, 20)),
+                              style: styleText(white, FontWeight.w700, 20)),
                         ]),
                         Padding(
                           padding: const EdgeInsets.only(top: 10),
@@ -62,10 +62,10 @@ class _SignInScreenState extends State<SignInScreen> {
                             text: TextSpan(children: [
                               TextSpan(
                                   text: "Don't have an account? ",
-                                  style: styleText(whi, FontWeight.w800, 14)),
+                                  style: styleText(white, FontWeight.w800, 14)),
                               TextSpan(
                                   text: "Sign up",
-                                  style: styleText(gre, FontWeight.w800, 14),
+                                  style: styleText(green, FontWeight.w800, 14),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
                                       Navigator.push(
@@ -94,15 +94,15 @@ class _SignInScreenState extends State<SignInScreen> {
                                     children: [
                                       Text(
                                         "OR",
-                                        style:
-                                            styleText(whi, FontWeight.w800, 14),
+                                        style: styleText(
+                                            white, FontWeight.w800, 14),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 8.0),
                                         child: Text("Log in via:",
                                             style: styleText(
-                                                whi, FontWeight.w800, 14)),
+                                                white, FontWeight.w800, 14)),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -169,11 +169,11 @@ class _SignInScreenState extends State<SignInScreen> {
                                     children: [
                                       Text("Email Address",
                                           style: styleText(
-                                              whi, FontWeight.w800, 14)),
+                                              white, FontWeight.w800, 14)),
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
-                                            _col = hasFocus ? gre : whi;
+                                            _col = hasFocus ? green : white;
                                           });
                                         },
                                         child: TextFormField(
@@ -191,7 +191,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                           autofocus: true,
                                           style: styleText(
                                               _col, FontWeight.normal, 16),
-                                          cursorColor: gre,
+                                          cursorColor: green,
                                           decoration:
                                               fieldText(_col, Icons.mail),
                                         ),
@@ -201,13 +201,13 @@ class _SignInScreenState extends State<SignInScreen> {
                                       ),
                                       Text(
                                         "Password",
-                                        style:
-                                            styleText(whi, FontWeight.w800, 14),
+                                        style: styleText(
+                                            white, FontWeight.w800, 14),
                                       ),
                                       Focus(
                                         onFocusChange: (hasFocus) {
                                           setState(() {
-                                            _colp = hasFocus ? gre : whi;
+                                            _colp = hasFocus ? green : white;
                                           });
                                         },
                                         child: TextFormField(
@@ -238,8 +238,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                     text: TextSpan(children: [
                                       TextSpan(
                                         text: "Forgot password?",
-                                        style:
-                                            styleText(gre, FontWeight.w800, 14),
+                                        style: styleText(
+                                            green, FontWeight.w800, 14),
                                       ),
                                     ]),
                                   ),
@@ -251,7 +251,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   Padding(
                                     padding: const EdgeInsets.only(top: 8.0),
                                     child: FloatingActionButton(
-                                      backgroundColor: gre,
+                                      backgroundColor: green,
                                       child: Icon(
                                           Icons.arrow_forward_ios_outlined),
                                       onPressed: () {},

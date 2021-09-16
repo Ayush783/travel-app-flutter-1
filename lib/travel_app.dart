@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/ui/home_screen.dart';
 import 'package:travel_app/ui/sign_in_screen.dart';
 import 'package:travel_app/ui/sign_up_screen.dart';
 
