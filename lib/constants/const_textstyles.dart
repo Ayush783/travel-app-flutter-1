@@ -5,11 +5,9 @@ TextStyle styleText(Color col, FontWeight wei, double size) {
       color: col, fontWeight: wei, fontSize: size, fontFamily: 'IBM');
 }
 
-TextStyle headingStyle() {
-  return TextStyle(
-    color: Colors.black,
-    fontWeight: FontWeight.bold,
-    fontFamily: "Comfortaa",
-    fontSize: 24,
-  );
-}
+const TextStyle headingStyle = TextStyle(
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+  fontFamily: "Comfortaa",
+  fontSize: 20,
+);

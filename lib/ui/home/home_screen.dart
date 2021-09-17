@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:travel_app/constants/const_colors.dart';
 import 'package:travel_app/constants/const_textstyles.dart';
+import 'package:travel_app/ui/home/widgets/const_ui.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -59,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             EdgeInsets.symmetric(horizontal: 28, vertical: 28),
                         child: Text(
                           "Need a vacation? Don't Worry we got you",
-                          style: headingStyle(),
+                          style: headingStyle,
                         ),
                       )
                     ],
@@ -101,11 +102,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     "Categories",
-                    style: headingStyle(),
+                    style: headingStyle,
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 20),
+                    child: Wrap(
+                      spacing: 10.0,
+                      children: [
+                        Categories(),
+                        Categories(),
+                        Categories(),
+                        Categories(),
+                      ],
+                    ),
+                  ),
+                  Text(
+                    "Trending Places",
+                    style: headingStyle,
                   )
                 ],
               ),
-            )
+            ),
           ],
         ));
   }
