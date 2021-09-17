@@ -18,8 +18,10 @@ class SocialMediaButton extends StatelessWidget {
       onPressed: () {
         onTap!();
       },
-      icon: SvgPicture.asset(imgUrl!),
-      iconSize: 48,
+      icon: imgUrl!.endsWith('png')
+          ? Image.asset(imgUrl!)
+          : SvgPicture.asset(imgUrl!),
+      iconSize: 42,
     );
   }
 }

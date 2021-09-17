@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_app/constants/const_colors.dart';
-import 'package:travel_app/constants/const_decorations.dart';
 import 'package:travel_app/constants/const_textstyles.dart';
+import 'package:travel_app/services/utility.dart';
 import 'package:travel_app/ui/auth/sign_in_screen.dart';
 import 'package:travel_app/ui/auth/widgets/social_media_button.dart';
 import 'package:travel_app/ui/auth/widgets/text_input_field.dart';
@@ -19,11 +19,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _email = new TextEditingController();
   TextEditingController _pass = new TextEditingController();
   TextEditingController _cnfpass = new TextEditingController();
+  final FocusNode _emailNode = FocusNode();
+  final FocusNode _passNode = FocusNode();
+  final FocusNode _cnfPassNode = FocusNode();
   bool check = false;
-  Color col = whi;
-  Color colp = whi;
-  Color colcp = whi;
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final Utility utils = Utility();
   bool _isValid() {
     final isValid = _formKey.currentState!.validate();
     if (!isValid) {
@@ -109,7 +110,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           onTap: () {
                             print("google");
                           },
-                          imgUrl: "assets/icons/google.svg",
+                          imgUrl: "assets/icons/google.png",
                         ),
                         SocialMediaButton(
                           key: UniqueKey(),
@@ -131,18 +132,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       children: [
                         Text("Email Address",
                             style: styleText(whi, FontWeight.w800, 14)),
+                        //email field
                         TextInputField(
                           controller: _email,
                           icon: Icons.mail,
                           isObsecure: false,
-                          validate: (value) {
-                            if (value!.isEmpty ||
-                                !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                    .hasMatch(value)) {
-                              return 'Enter a valid email!';
-                            }
-                            return null;
-                          },
+                          validate: utils.validateEmail,
+                          node: _emailNode,
                         ),
                         SizedBox(
                           height: 10,
@@ -151,31 +147,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           "Password",
                           style: styleText(whi, FontWeight.w800, 14),
                         ),
+                        //password field
                         TextInputField(
                           controller: _pass,
                           icon: Icons.lock,
                           isObsecure: true,
-                          validate: (value) {
-                            if (value!.isEmpty) {
-                              return 'Enter a valid password!';
-                            }
-                            return null;
-                          },
+                          validate: utils.validatePassword,
+                          node: _passNode,
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Text("Confirm Password",
                             style: styleText(whi, FontWeight.w800, 14)),
+                        //confirm password field
                         TextInputField(
                           controller: _cnfpass,
                           icon: Icons.lock,
                           isObsecure: false,
+                          node: _cnfPassNode,
                           validate: (value) {
-                            if (value != _pass.text) {
-                              return "Password Mismatch";
-                            }
-                            return null;
+                            return utils.validateConfirmPassword(value, _pass);
                           },
                         ),
                       ],
