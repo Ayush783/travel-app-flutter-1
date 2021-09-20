@@ -55,7 +55,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Login and explore your favourite destinations.",
-                      style: styleText(whi, FontWeight.w700, 20)),
+                      style: styleText(white, FontWeight.w700, 20)),
                   //sign up screen nav
                   Padding(
                     padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -63,10 +63,10 @@ class _SignInScreenState extends State<SignInScreen> {
                       text: TextSpan(children: [
                         TextSpan(
                             text: "Don't have an account? ",
-                            style: styleText(whi, FontWeight.w800, 14)),
+                            style: styleText(white, FontWeight.w800, 14)),
                         TextSpan(
                             text: "Sign up",
-                            style: styleText(gre, FontWeight.w800, 14),
+                            style: styleText(green, FontWeight.w800, 14),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.push(
@@ -81,7 +81,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     alignment: Alignment.center,
                     child: Text(
                       "OR",
-                      style: styleText(whi, FontWeight.w800, 14),
+                      style: styleText(white, FontWeight.w800, 14),
                     ),
                   ),
                   Align(
@@ -89,7 +89,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Text("Log in via:",
-                          style: styleText(whi, FontWeight.w800, 14)),
+                          style: styleText(white, FontWeight.w800, 14)),
                     ),
                   ),
                   Padding(
@@ -124,7 +124,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Email Address",
-                            style: styleText(whi, FontWeight.w800, 14)),
+                            style: styleText(white, FontWeight.w800, 14)),
                         //email field
                         TextInputField(
                           controller: _email,
@@ -138,7 +138,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         Text(
                           "Password",
-                          style: styleText(whi, FontWeight.w800, 14),
+                          style: styleText(white, FontWeight.w800, 14),
                         ),
                         //password field
                         TextInputField(
@@ -160,7 +160,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     },
                     child: Text(
                       'Forgot password?',
-                      style: styleText(gre, FontWeight.w800, 14),
+                      style: styleText(green, FontWeight.w800, 14),
                     ),
                   ),
                   Align(
@@ -168,7 +168,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: FloatingActionButton(
-                        backgroundColor: gre,
+                        backgroundColor: green,
                         child: Icon(Icons.arrow_forward_ios_outlined),
                         onPressed: () {
                           print('right');

@@ -23,7 +23,7 @@ class TextInputField extends StatefulWidget {
 }
 
 class _TextInputFieldState extends State<TextInputField> {
-  Color iconColor = whi;
+  Color iconColor = white;
 
   @override
   void initState() {
@@ -31,11 +31,11 @@ class _TextInputFieldState extends State<TextInputField> {
     widget.node!.addListener(() {
       if (widget.node!.hasFocus)
         setState(() {
-          iconColor = gre;
+          iconColor = green;
         });
       else
         setState(() {
-          iconColor = whi;
+          iconColor = white;
         });
     });
   }
@@ -53,10 +53,10 @@ class _TextInputFieldState extends State<TextInputField> {
       cursorColor: Colors.green,
       decoration: InputDecoration(
         enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: whi),
+          borderSide: BorderSide(color: white),
         ),
         focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: gre, width: 3),
+          borderSide: BorderSide(color: green, width: 3),
         ),
         errorBorder:
             UnderlineInputBorder(borderSide: BorderSide(color: Colors.red)),

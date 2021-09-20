@@ -73,10 +73,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       text: TextSpan(children: [
                         TextSpan(
                             text: "Already have an account? ",
-                            style: styleText(whi, FontWeight.w800, 14)),
+                            style: styleText(white, FontWeight.w800, 14)),
                         TextSpan(
                             text: "Log in",
-                            style: styleText(gre, FontWeight.w800, 14),
+                            style: styleText(green, FontWeight.w800, 14),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.of(context).push(MaterialPageRoute(
@@ -89,7 +89,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     alignment: Alignment.center,
                     child: Text(
                       "OR",
-                      style: styleText(whi, FontWeight.w800, 14),
+                      style: styleText(white, FontWeight.w800, 14),
                     ),
                   ),
                   Align(
@@ -97,7 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Text("Sign up with:",
-                          style: styleText(whi, FontWeight.w800, 14)),
+                          style: styleText(white, FontWeight.w800, 14)),
                     ),
                   ),
                   Padding(
@@ -131,7 +131,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Email Address",
-                            style: styleText(whi, FontWeight.w800, 14)),
+                            style: styleText(white, FontWeight.w800, 14)),
                         //email field
                         TextInputField(
                           controller: _email,
@@ -145,7 +145,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         Text(
                           "Password",
-                          style: styleText(whi, FontWeight.w800, 14),
+                          style: styleText(white, FontWeight.w800, 14),
                         ),
                         //password field
                         TextInputField(
@@ -159,7 +159,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           height: 10,
                         ),
                         Text("Confirm Password",
-                            style: styleText(whi, FontWeight.w800, 14)),
+                            style: styleText(white, FontWeight.w800, 14)),
                         //confirm password field
                         TextInputField(
                           controller: _cnfpass,
@@ -177,9 +177,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       Checkbox(
                           value: check,
-                          checkColor: gre,
-                          activeColor: whi,
-                          side: BorderSide(color: Colors.white, width: 2),
+                          checkColor: green,
+                          activeColor: white,
+                          // borderSide: BorderSide(color: Colors.white, width: 2),
                           onChanged: (val) {
                             setState(() {
                               check = !check;
@@ -190,19 +190,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         text: TextSpan(children: [
                           TextSpan(
                             text: "I agree to ",
-                            style: styleText(whi, FontWeight.w800, 14),
+                            style: styleText(white, FontWeight.w800, 14),
                           ),
                           TextSpan(
                             text: "Terms",
-                            style: styleText(gre, FontWeight.w800, 14),
+                            style: styleText(green, FontWeight.w800, 14),
                           ),
                           TextSpan(
                             text: " & ",
-                            style: styleText(whi, FontWeight.w800, 14),
+                            style: styleText(white, FontWeight.w800, 14),
                           ),
                           TextSpan(
                             text: "Conditions",
-                            style: styleText(gre, FontWeight.w800, 14),
+                            style: styleText(green, FontWeight.w800, 14),
                           ),
                         ]),
                       ),
@@ -213,7 +213,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: FloatingActionButton(
-                        backgroundColor: gre,
+                        backgroundColor: green,
                         child: Icon(Icons.arrow_forward_ios_outlined),
                         onPressed: () {
                           if (_isValid()) {
