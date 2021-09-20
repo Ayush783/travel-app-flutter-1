@@ -119,7 +119,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(
                     "Trending Places",
                     style: headingStyle,
-                  )
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+                    height: 151,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: green_light,
+                    ),
+                    child: Text("Implement Showcase"),
+                  ),
                 ],
               ),
             ),
