@@ -5,7 +5,7 @@ import 'package:travel_app/travel_app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIOverlays([]);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
   runApp(
     ProviderScope(
       child: TravelApp(),
