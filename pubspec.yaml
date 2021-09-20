@@ -31,3 +31,6 @@ flutter:
     - family: IBM
       fonts:
         - asset: assets/fonts/IBMPlexSans-Regular.ttf
+    - family: Comfortaa
+      fonts:
+        - asset: assets/fonts/Comfortaa.ttf
