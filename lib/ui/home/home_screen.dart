@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:travel_app/constants/const_colors.dart';
 import 'package:travel_app/constants/const_textstyles.dart';
+import 'package:travel_app/ui/home/Data/blog_data.dart';
+import 'package:travel_app/ui/home/widgets/blog_show_ui.dart';
 import 'package:travel_app/ui/home/widgets/const_ui.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -130,6 +132,46 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: Text("Implement Showcase"),
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Blogs",
+                        style: headingStyle,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          print("More Blogs Needed");
+                        },
+                        child: Container(
+                            child: Row(
+                          children: [
+                            Text(
+                              "More",
+                              style:
+                                  styleText(Colors.grey, FontWeight.w400, 16),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Icon(
+                              Icons.arrow_forward_sharp,
+                              color: Colors.grey,
+                              size: 16,
+                            )
+                          ],
+                        )),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    child: ListView.builder(
+                      itemCount: 10,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ShowBlog(blog: blogs[index % 2]);
+                      },
+                    ),
+                  )
                 ],
               ),
             ),
