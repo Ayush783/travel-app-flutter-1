@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:travel_app/constants/const_colors.dart';
+import 'package:travel_app/constants/const_textstyles.dart';
 import 'package:travel_app/models/blog_model.dart';
 
 class ShowBlog extends StatelessWidget {
@@ -7,8 +10,101 @@ class ShowBlog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Container(
-      child: Text(blog.title),
+      margin: EdgeInsets.only(bottom: 30),
+      // color: green_light,
+      child: Column(
+        children: [
+          Container(
+              child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 50,
+                width: 50,
+                margin: EdgeInsets.only(right: 15),
+                child: SvgPicture.asset("assets/icons/user-female.svg"),
+              ),
+              Expanded(
+                // height: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Wrap(children: [
+                                Text(
+                                  blog.title,
+                                  style: styleText(
+                                      Colors.black, FontWeight.w600, 18),
+                                ),
+                              ]),
+                              Text("@" + blog.handle,
+                                  style: styleText(
+                                      Colors.grey, FontWeight.normal, 16)),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(18, 15, 0, 0),
+                          child: Container(
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 3.0),
+                                  child: Text(
+                                    blog.rating.toString(),
+                                    style: styleText(
+                                        Colors.grey, FontWeight.normal, 17),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 3.0,
+                                ),
+                                Icon(
+                                  Icons.star_rate,
+                                  color: Colors.amberAccent,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Container(
+                        width: 250,
+                        // margin: EdgeInsets.only(right: 10),
+                        child: Wrap(
+                          // direction: Axis.vertical,
+                          children: [Text(blog.blog)],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              // Text("Hello")
+            ],
+          )),
+          SizedBox(
+            height: 10,
+          ),
+          Divider(
+            color: Colors.grey,
+          ),
+        ],
+      ),
     );
   }
 }
