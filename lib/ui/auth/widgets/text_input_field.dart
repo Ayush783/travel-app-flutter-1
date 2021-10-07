@@ -41,6 +41,12 @@ class _TextInputFieldState extends State<TextInputField> {
   }
 
   @override
+  void dispose() {
+    widget.node!.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,

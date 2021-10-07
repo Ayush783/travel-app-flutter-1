@@ -9,9 +9,10 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc(this._firebaseaAuthService) : super(AuthInitial());
+  AuthBloc() : super(AuthInitial());
 
-  final FirebaseaAuthService _firebaseaAuthService;
+  static final FirebaseaAuthService _firebaseaAuthService =
+      FirebaseaAuthService();
 
   @override
   Stream<AuthState> mapEventToState(
