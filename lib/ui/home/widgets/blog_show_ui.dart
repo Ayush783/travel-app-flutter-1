@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:travel_app/constants/const_colors.dart';
 import 'package:travel_app/constants/const_textstyles.dart';
 import 'package:travel_app/models/blog_model.dart';
+import 'package:travel_app/ui/home/widgets/const_ui.dart';
 
 class ShowBlog extends StatelessWidget {
   final Blog blog;
@@ -13,7 +14,7 @@ class ShowBlog extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.only(bottom: 30),
-      // color: green_light,
+      color: green_light,
       child: Column(
         children: [
           Container(
@@ -87,7 +88,12 @@ class ShowBlog extends StatelessWidget {
                         // margin: EdgeInsets.only(right: 10),
                         child: Wrap(
                           // direction: Axis.vertical,
-                          children: [Text(blog.blog)],
+                          children: [
+                            Text(
+                              blog.blog,
+                              style: normalText,
+                            )
+                          ],
                         ),
                       ),
                     )
@@ -103,8 +109,32 @@ class ShowBlog extends StatelessWidget {
           Divider(
             color: Colors.grey,
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              BlogIconContainer(
+                  icon1: Icons.favorite_border_outlined,
+                  icon2: Icons.chat_bubble_outline,
+                  count1: blog.likes.toString(),
+                  count2: blog.comments.toString()),
+              BlogIconContainer(
+                  icon1: Icons.north,
+                  icon2: Icons.south,
+                  count1: blog.up.toString(),
+                  count2: blog.down.toString())
+            ],
+          )
         ],
       ),
     );
+  }
+
+  String convertToK(int likes) {
+    if (likes < 1000) {
+      return likes.toString();
+    }
+    double k = likes / 1000;
+    var n = k.toStringAsFixed(2);
+    return n;
   }
 }
