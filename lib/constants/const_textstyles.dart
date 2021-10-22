@@ -11,3 +11,10 @@ const TextStyle headingStyle = TextStyle(
   fontFamily: "Comfortaa",
   fontSize: 20,
 );
+
+const TextStyle normalText = TextStyle(
+  color: Colors.black,
+  // fontWeight: FontWeight.bold,
+  fontFamily: "IBM",
+  fontSize: 16,
+);
