@@ -14,6 +14,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String snowregion = "assets/images/Snow Region.png";
+  String hillstation = "assets/images/Hill Station.png";
+  String valley = "assets/images/Valley.png";
+  String beach = "assets/images/Beach.png";
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -185,11 +189,76 @@ class _HomeScreenState extends State<HomeScreen> {
                           return ShowBlog(blog: blogs[index % 2]);
                         },
                       ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Types Of Places",
+                          style: headingStyle,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            print("More Places Needed");
+                          },
+                          child: Container(
+                              child: Row(
+                            children: [
+                              Text(
+                                "More",
+                                style:
+                                    styleText(Colors.grey, FontWeight.w400, 16),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Icon(
+                                Icons.arrow_forward_sharp,
+                                color: Colors.grey,
+                                size: 16,
+                              )
+                            ],
+                          )),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      // color: Colors.red,
+                      width: double.infinity,
+                      child: Wrap(
+                        alignment: WrapAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                              onTap: () {
+                                print("Card Pressed");
+                              },
+                              child: PlaceCard(
+                                  img: snowregion, place: "Snow Region")),
+                          InkWell(
+                              onTap: () {
+                                print("Card 2 Pressed");
+                              },
+                              child: PlaceCard(
+                                  img: hillstation, place: "Hill Station")),
+                          InkWell(
+                              onTap: () {
+                                print("Card 3 pressed");
+                              },
+                              child: PlaceCard(img: valley, place: "Valley")),
+                          InkWell(
+                              onTap: () {
+                                print("Card 4 pressed");
+                              },
+                              child: PlaceCard(img: beach, place: "Beach")),
+                        ],
+                      ),
                     )
                   ],
                 ),
               ),
-              Text("Hello"),
               Container(
                 height: 100,
                 width: size.width,

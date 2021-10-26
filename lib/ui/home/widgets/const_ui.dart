@@ -105,3 +105,44 @@ class _BlogIconContainerState extends State<BlogIconContainer> {
     );
   }
 }
+
+class PlaceCard extends StatelessWidget {
+  String img;
+  String place;
+  PlaceCard({Key? key, required this.img, required this.place})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      width: 170,
+      decoration: BoxDecoration(
+          color: green_light, borderRadius: BorderRadius.circular(10)),
+      child: Column(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  child: Image(
+                    image: AssetImage(img),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Text(
+                  "$place",
+                  style: styleText(green, FontWeight.normal, 16),
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
