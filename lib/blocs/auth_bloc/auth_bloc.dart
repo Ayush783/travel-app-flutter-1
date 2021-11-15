@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
 import 'package:travel_app/models/user_model.dart';
 import 'package:travel_app/services/firebase_auth_service.dart';
@@ -26,7 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if (userModel.error!)
         yield AuthFailure(userModel.errorMessage!);
       else
-        yield AuthSuccess();
+        yield AuthSuccess(event.context);
     }
     //sign up event
     else if (event is SignUpWithEmail) {
@@ -38,6 +39,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       else
         yield EmailLinkSent();
     } else if (event is SignInWithGoogle) {
-    } else {}
+      yield AuthStarted();
+      final userModel = await _firebaseaAuthService.signInWithGoogle();
+      if (userModel.error!)
+        yield AuthFailure(userModel.errorMessage!);
+      else
+        yield AuthSuccess(event.context);
+    } else if (event is SignOut) {
+      yield Signingout();
+      await _firebaseaAuthService.signOut();
+      yield SignedOut(event.context);
+    }
   }
 }

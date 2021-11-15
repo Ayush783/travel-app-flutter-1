@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travel_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:travel_app/constants/const_colors.dart';
 import 'package:travel_app/constants/const_textstyles.dart';
 import 'package:travel_app/services/utility.dart';
@@ -25,14 +27,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool check = false;
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final Utility utils = Utility();
-  bool _isValid() {
-    final isValid = _formKey.currentState!.validate();
-    if (!isValid) {
-      return false;
-    }
-    _formKey.currentState!.save();
-    return true;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,16 +42,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
           image: ExactAssetImage("assets/images/sign.jpg"),
         )),
         child: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(
-              horizontal: size.width / 8,
-              vertical: size.height / 16,
-            ),
+          child: Align(
+            alignment: Alignment.center,
             child: Container(
               width: MediaQuery.of(context).size.width / 1.29,
-              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.fromLTRB(
+                  size.width / 8, size.width / 2.5, size.width / 8, 0),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 32),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Color(0xFF17242D).withOpacity(0.8),
@@ -75,55 +66,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             text: "Already have an account? ",
                             style: styleText(white, FontWeight.w800, 14)),
                         TextSpan(
-                            text: "Log in",
+                            text: "Sign in",
                             style: styleText(green, FontWeight.w800, 14),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => SignInScreen()));
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) => SignInScreen()));
                               })
                       ]),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "OR",
-                      style: styleText(white, FontWeight.w800, 14),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text("Sign up with:",
-                          style: styleText(white, FontWeight.w800, 14)),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        SocialMediaButton(
-                          key: UniqueKey(),
-                          onTap: () {
-                            print("google");
-                          },
-                          imgUrl: "assets/icons/google.png",
-                        ),
-                        SocialMediaButton(
-                          key: UniqueKey(),
-                          onTap: () {
-                            print("facebook");
-                          },
-                          imgUrl: "assets/icons/facebook.svg",
-                        ),
-                      ],
-                    ),
-                  ),
                   SizedBox(
-                    height: 10,
+                    height: 28,
                   ),
                   Form(
                     key: _formKey,
@@ -214,13 +169,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       padding: const EdgeInsets.only(top: 8.0),
                       child: FloatingActionButton(
                         backgroundColor: green,
-                        child: Icon(Icons.arrow_forward_ios_outlined),
+                        child: BlocBuilder<AuthBloc, AuthState>(
+                          builder: (context, state) {
+                            if (state is AuthStarted) {
+                              return Container(
+                                padding: EdgeInsets.all(16),
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                  strokeWidth: 3,
+                                ),
+                              );
+                            } else
+                              return Icon(Icons.arrow_forward_ios_outlined);
+                          },
+                        ),
                         onPressed: () {
-                          if (_isValid()) {
-                            print("Ready to go!!");
-                          } else {
-                            print("Errros!!");
-                          }
+                          if (_formKey.currentState!.validate())
+                            context
+                                .read<AuthBloc>()
+                                .add(SignUpWithEmail(_email.text, _pass.text));
                         },
                       ),
                     ),

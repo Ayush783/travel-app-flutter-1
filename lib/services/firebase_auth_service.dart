@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:travel_app/models/user_model.dart';
 
 class FirebaseaAuthService {
@@ -67,5 +68,26 @@ class FirebaseaAuthService {
   //auth state changes
   Stream<User?> authStateChanges() async* {
     yield* _auth.authStateChanges();
+  }
+
+  //google sign in
+  Future<UserModel> signInWithGoogle() async {
+    try {
+      final googleUser = await GoogleSignIn().signIn();
+
+      final googleAuth = await googleUser?.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      final userCred =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      return UserModel(user: userCred.user);
+    } catch (e) {
+      print(e.toString());
+      return UserModel.failure(errorMessage: e.toString());
+    }
   }
 }

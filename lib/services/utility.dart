@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Utility {
   String? validateEmail(String? value) {
@@ -22,5 +23,47 @@ class Utility {
       return "Password Mismatch";
     }
     return null;
+  }
+
+  void showBottomSnackBar(
+      BuildContext context, bool isFailure, String message) {
+    if (isFailure)
+      showModalBottomSheet(
+        context: context,
+        elevation: 4,
+        builder: (context) => Container(
+          color: Colors.red,
+          height: MediaQuery.of(context).size.height / 10,
+          padding: EdgeInsets.fromLTRB(
+            MediaQuery.of(context).size.height / 42,
+            12,
+            MediaQuery.of(context).size.height / 42,
+            0,
+          ),
+          child: Text(
+            message,
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+        ),
+      );
+    else
+      showModalBottomSheet(
+        context: context,
+        elevation: 4,
+        builder: (context) => Container(
+          color: Colors.red,
+          height: MediaQuery.of(context).size.height / 10,
+          padding: EdgeInsets.fromLTRB(
+            MediaQuery.of(context).size.height / 42,
+            12,
+            MediaQuery.of(context).size.height / 42,
+            0,
+          ),
+          child: Text(
+            message,
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+        ),
+      );
   }
 }

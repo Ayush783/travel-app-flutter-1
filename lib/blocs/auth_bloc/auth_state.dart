@@ -13,6 +13,18 @@ class AuthFailure extends AuthState {
   AuthFailure(this.errorMessage);
 }
 
-class AuthSuccess extends AuthState {}
+class AuthSuccess extends AuthState {
+  final BuildContext context;
+
+  AuthSuccess(this.context);
+}
 
 class EmailLinkSent extends AuthState {}
+
+class SignedOut extends AuthState {
+  final BuildContext context;
+
+  SignedOut(this.context);
+}
+
+class Signingout extends AuthState {}

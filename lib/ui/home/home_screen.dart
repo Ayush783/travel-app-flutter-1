@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:travel_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:travel_app/constants/const_colors.dart';
 import 'package:travel_app/constants/const_textstyles.dart';
 import 'package:travel_app/ui/home/Data/blog_data.dart';
@@ -49,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         InkWell(
                           onTap: () {
                             print("Sign Out");
+                            context.read<AuthBloc>().add(SignOut(context));
                           },
                           child: Container(
                               height: 50,

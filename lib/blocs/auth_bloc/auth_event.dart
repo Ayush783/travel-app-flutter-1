@@ -5,8 +5,9 @@ abstract class AuthEvent {}
 
 class SignInWithEmail extends AuthEvent {
   final String email, password;
+  final BuildContext context;
 
-  SignInWithEmail(this.email, this.password);
+  SignInWithEmail(this.email, this.password, this.context);
 }
 
 class SignUpWithEmail extends AuthEvent {
@@ -15,6 +16,20 @@ class SignUpWithEmail extends AuthEvent {
   SignUpWithEmail(this.email, this.password);
 }
 
-class SignInWithGoogle extends AuthEvent {}
+class SignInWithGoogle extends AuthEvent {
+  final BuildContext context;
 
-class SignInWithFacebook extends AuthEvent {}
+  SignInWithGoogle(this.context);
+}
+
+class SignInWithFacebook extends AuthEvent {
+  final BuildContext context;
+
+  SignInWithFacebook(this.context);
+}
+
+class SignOut extends AuthEvent {
+  final BuildContext context;
+
+  SignOut(this.context);
+}
