@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:travel_app/models/user_model.dart';
 
@@ -12,13 +13,13 @@ class FirebaseaAuthService {
       final userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       //check email verif
-      bool isVerifired = this.checkEmailVerification(userCredential.user);
+      bool isVerifired = checkEmailVerification(userCredential.user);
       //sign in or give error
       if (isVerifired)
         return UserModel(user: userCredential.user);
       else {
         //sign out
-        await this.signOut();
+        await signOut();
         //throw error instead this
         return UserModel.unverifiedEmail();
       }
@@ -35,9 +36,9 @@ class FirebaseaAuthService {
       final userCredential = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       //send email link
-      await this.sendVerifyEmailLink(userCredential.user);
+      await sendVerifyEmailLink(userCredential.user);
       //sign out so that user can sign in again after email verification
-      await this.signOut();
+      await signOut();
       return UserModel.sentEmailLink();
     } on FirebaseAuthException catch (e) {
       //handle exception
@@ -82,11 +83,25 @@ class FirebaseaAuthService {
         idToken: googleAuth?.idToken,
       );
 
-      final userCred =
-          await FirebaseAuth.instance.signInWithCredential(credential);
+      final userCred = await _auth.signInWithCredential(credential);
       return UserModel(user: userCred.user);
     } catch (e) {
       print(e.toString());
+      return UserModel.failure(errorMessage: e.toString());
+    }
+  }
+
+  //sign in with facebook
+  Future<UserModel> signInWithFb() async {
+    try {
+      final fblogin = await FacebookAuth.instance.login();
+      final credential =
+          FacebookAuthProvider.credential(fblogin.accessToken!.token);
+      final userCred = await _auth.signInWithCredential(credential);
+      await sendVerifyEmailLink(userCred.user);
+      signOut();
+      return UserModel.sentEmailLink();
+    } catch (e) {
       return UserModel.failure(errorMessage: e.toString());
     }
   }
