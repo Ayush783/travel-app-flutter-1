@@ -49,6 +49,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       yield Signingout();
       await _firebaseaAuthService.signOut();
       yield SignedOut(event.context);
+    } else if (event is SignInWithFacebook) {
+      yield AuthStarted();
+      final UserModel userModel = await _firebaseaAuthService.signInWithFb();
+      if (userModel.error!)
+        yield AuthFailure(userModel.errorMessage!);
+      else {
+        if (userModel.errorMessage == 'EMAIL_VERIFICATION_LINK_SENT')
+          yield EmailLinkSent();
+        else
+          yield AuthSuccess(event.context);
+      }
     }
   }
 }

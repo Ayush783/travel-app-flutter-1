@@ -21,7 +21,7 @@ class UserModel {
   UserModel.sentEmailLink()
       : user = null,
         error = false,
-        errorMessage = 'NO_ERROR';
+        errorMessage = 'EMAIL_VERIFICATION_LINK_SENT';
 
   //email not verified constructor
   UserModel.unverifiedEmail()

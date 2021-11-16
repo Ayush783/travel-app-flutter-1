@@ -98,9 +98,13 @@ class FirebaseaAuthService {
       final credential =
           FacebookAuthProvider.credential(fblogin.accessToken!.token);
       final userCred = await _auth.signInWithCredential(credential);
-      await sendVerifyEmailLink(userCred.user);
-      signOut();
-      return UserModel.sentEmailLink();
+      if (userCred.user!.emailVerified) {
+        await sendVerifyEmailLink(userCred.user);
+        signOut();
+        return UserModel.sentEmailLink();
+      } else {
+        return UserModel(user: userCred.user);
+      }
     } catch (e) {
       return UserModel.failure(errorMessage: e.toString());
     }

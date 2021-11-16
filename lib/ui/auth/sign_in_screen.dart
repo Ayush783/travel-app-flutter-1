@@ -106,8 +106,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       SocialMediaButton(
                         key: UniqueKey(),
                         onTap: () {
-                          print(2);
-                          print("facebook");
+                          context
+                              .read<AuthBloc>()
+                              .add(SignInWithFacebook(context));
                         },
                         imgUrl: "assets/icons/facebook.svg",
                       ),
