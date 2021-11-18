@@ -17,11 +17,8 @@ class TravelApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: []);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Travel App',
-      theme: ThemeData(primaryColor: Color(0xFF008665)),
-      home: _firebaseaAuthService.isUserNull() ? SignInScreen() : HomeScreen(),
+    return Scaffold(
+      body: _firebaseaAuthService.isUserNull() ? SignInScreen() : HomeScreen(),
     );
   }
 }
@@ -33,7 +30,11 @@ class AuthBlocProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<AuthBloc>(
       create: (context) => AuthBloc(),
-      child: AuthBlocListener(),
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Travel App',
+          theme: ThemeData(primaryColor: Color(0xFF008665)),
+          home: AuthBlocListener()),
     );
   }
 }

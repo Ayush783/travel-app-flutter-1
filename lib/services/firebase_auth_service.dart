@@ -94,11 +94,15 @@ class FirebaseaAuthService {
   //sign in with facebook
   Future<UserModel> signInWithFb() async {
     try {
-      final fblogin = await FacebookAuth.instance.login();
+      final fblogin = await FacebookAuth.instance.login(permissions: [
+        "email",
+        "public_profile",
+      ]);
       final credential =
           FacebookAuthProvider.credential(fblogin.accessToken!.token);
       final userCred = await _auth.signInWithCredential(credential);
-      if (userCred.user!.emailVerified) {
+      if (userCred.user?.emailVerified == false) {
+        print(_auth.currentUser?.providerData[0].email);
         await sendVerifyEmailLink(userCred.user);
         signOut();
         return UserModel.sentEmailLink();
@@ -106,6 +110,7 @@ class FirebaseaAuthService {
         return UserModel(user: userCred.user);
       }
     } catch (e) {
+      signOut();
       return UserModel.failure(errorMessage: e.toString());
     }
   }
