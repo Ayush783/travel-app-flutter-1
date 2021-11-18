@@ -7,6 +7,7 @@ import 'package:travel_app/constants/const_textstyles.dart';
 import 'package:travel_app/ui/home/Data/blog_data.dart';
 import 'package:travel_app/ui/home/widgets/blog_show_ui.dart';
 import 'package:travel_app/ui/home/widgets/const_ui.dart';
+import 'package:travel_app/ui/home/widgets/newsLetter.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -258,14 +259,25 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: PlaceCard(img: beach, place: "Beach")),
                         ],
                       ),
-                    )
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      "Travel Guidelines",
+                      style: headingStyle,
+                      textAlign: TextAlign.left,
+                    ),
+                    Text("Print Travel Guidelines here"),
+                    SizedBox(height: 15),
+                    NewsLetter(),
                   ],
                 ),
               ),
               Container(
                 height: 100,
                 width: size.width,
-                color: Colors.red,
+                // color: Colors.red,
               )
             ],
           ),
